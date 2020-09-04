@@ -7,10 +7,9 @@ namespace BowlingBall
     /// </summary>
     public class Game:IGame
     {
-        private int score = 0;
+        private int score = -1;
         private static readonly int[] allRolls = new int[21];
         private int currentRollis = 0;
-        private int frameIndex;
         /// <summary>
         /// is for each time a ball is rolled
         /// </summary>
@@ -27,25 +26,6 @@ namespace BowlingBall
         public int GetScore()
         {
             
-            for (int frame = 0; frame < 10; frame++)
-            {
-                if (IsStrike(frameIndex))
-                {
-                    score += 10 + StrikeBonus(frameIndex);
-                    frameIndex++;
-                }
-                else if (IsSpare(frameIndex))
-                {
-                    score += 10 + SpareBonus(frameIndex);
-                    frameIndex += 2;
-                }
-                else
-                {
-                    score += SumOfBallsInFrame(frameIndex);
-                    frameIndex += 2;
-                }
-            }
-
             return score;
         }
         public bool IsStrike(int frameIndex)
